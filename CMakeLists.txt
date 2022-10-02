@@ -18,3 +18,13 @@ target_include_directories(helloworld_cli PRIVATE ${Boost_INCLUDE_DIRS} ${CMAKE_
 target_include_directories(libTests PRIVATE ${Boost_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/generated_sources)
 
 add_test(NAME libTests COMMAND libTests)
+
+install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
+
+set(CPACK_GENERATOR DEB)
+
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+
+include(CPack)
